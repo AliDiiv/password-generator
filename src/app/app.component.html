@@ -1,0 +1,70 @@
+<div class="container mt-6">
+  <div class="columns is-centered">
+    <div class="column is-half">
+      <div class="box">
+        <h1 class="title has-text-centered">Password Generator</h1>
+
+        <!-- Length -->
+        <div class="field">
+          <label class="label">Length</label>
+          <div class="control">
+            <input class="input" type="number" min="1" #len (input)="onChangeLength(len.value)"
+              placeholder="Enter password length" />
+          </div>
+        </div>
+
+        <!-- Use Letters -->
+        <div class="field">
+          <div class="control">
+            <label class="checkbox">
+              <input type="checkbox" (change)="onChangeLetter()" />
+              Use Letters
+            </label>
+          </div>
+        </div>
+
+        <!-- Use Numbers -->
+        <div class="field">
+          <div class="control">
+            <label class="checkbox">
+              <input type="checkbox" (change)="onChangeNumber()" />
+              Use Numbers
+            </label>
+          </div>
+        </div>
+
+        <!-- Use Symbols -->
+        <div class="field">
+          <div class="control">
+            <label class="checkbox">
+              <input type="checkbox" (change)="onChangeSymbol()" />
+              Use Symbols
+            </label>
+          </div>
+        </div>
+
+        <!-- Generate Button -->
+        <div class="field has-text-centered mt-4">
+          <div class="control">
+            <button class="button is-primary"
+              [disabled]="!(length && (includeLetter || includeNumber || includeSymbol))" (click)="onButtonClick()">
+              Generate
+            </button>
+          </div>
+        </div>
+
+        <!-- Result -->
+        <div class="field mt-5" *ngIf="password">
+          <label class="label">Your Password</label>
+          <div class="control">
+            <input class="input is-success" [value]="password" type="text" readonly />
+          </div>
+        </div>
+
+
+        <!-- Debug -->
+        <p class="has-text-grey has-text-centered is-size-7">Length: {{ length }}</p>
+      </div>
+    </div>
+  </div>
+</div>
